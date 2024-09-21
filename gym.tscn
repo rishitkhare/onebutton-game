@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc3r6i4y7vtkl"]
+
+[ext_resource type="Texture2D" uid="uid://ces8k2gh37el0" path="res://icon.svg" id="1_1amia"]
+[ext_resource type="Script" path="res://Player/playermovement.gd" id="2_xq2pe"]
+[ext_resource type="SpriteFrames" uid="uid://5neagwvg8waa" path="res://Player/playerspriteframes.tres" id="3_begxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hu4i"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jh41"]
+size = Vector2(32, 32)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LevelGeometry" type="Node" parent="."]
+
+[node name="squarecollider" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(71, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="squarecollider2" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(200, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider2"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider2"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="squarecollider3" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(321, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider3"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider3"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="squarecollider4" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(430, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider4"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider4"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="squarecollider5" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(545, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider5"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider5"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="squarecollider6" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(661, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider6"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider6"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(280, 162)
+script = ExtResource("2_xq2pe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+modulate = Color(1, 0.0627451, 0.360784, 1)
+sprite_frames = ExtResource("3_begxd")
+frame_progress = 0.738886
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_8jh41")
