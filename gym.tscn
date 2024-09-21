@@ -14,15 +14,6 @@ size = Vector2(32, 32)
 
 [node name="LevelGeometry" type="Node" parent="."]
 
-[node name="squarecollider" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(71, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
 [node name="squarecollider2" type="StaticBody2D" parent="LevelGeometry"]
 position = Vector2(200, 260)
 
@@ -69,7 +60,7 @@ texture = ExtResource("1_1amia")
 shape = SubResource("RectangleShape2D_4hu4i")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(280, 180)
+position = Vector2(280, 165)
 script = ExtResource("2_xq2pe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -84,4 +75,20 @@ shape = SubResource("RectangleShape2D_8jh41")
 position_smoothing_enabled = true
 
 [node name="groundedcheck" type="RayCast2D" parent="Player"]
-target_position = Vector2(0, 27)
+position = Vector2(-2, 0)
+target_position = Vector2(0, 18)
+
+[node name="groundedchecktimer" type="Timer" parent="Player"]
+wait_time = 0.163
+one_shot = true
+
+[node name="squarecollider" type="StaticBody2D" parent="."]
+position = Vector2(71, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="squarecollider"]
+texture = ExtResource("1_1amia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="squarecollider"]
+shape = SubResource("RectangleShape2D_4hu4i")
+
+[connection signal="timeout" from="Player/groundedchecktimer" to="Player" method="_on_groundedchecktimer_timeout"]
