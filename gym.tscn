@@ -69,7 +69,7 @@ texture = ExtResource("1_1amia")
 shape = SubResource("RectangleShape2D_4hu4i")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(280, 162)
+position = Vector2(280, 180)
 script = ExtResource("2_xq2pe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -82,3 +82,6 @@ shape = SubResource("RectangleShape2D_8jh41")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
+
+[node name="groundedcheck" type="RayCast2D" parent="Player"]
+target_position = Vector2(0, 27)
