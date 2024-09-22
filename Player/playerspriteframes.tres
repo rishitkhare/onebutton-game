@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://ces8k2gh37el0" path="res://icon.svg" id="1_wcqww"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbthc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgsm2"]
 atlas = ExtResource("1_wcqww")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 64, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fbthc")
+"texture": SubResource("AtlasTexture_wgsm2")
 }],
 "loop": true,
 "name": &"default",
