@@ -22,7 +22,6 @@ func _physics_process(delta):
 	var old_position = position
 	var new_position = original_position + lerp(movements[index], movements[(index + 1) % movements.size()], fmod(t_value, seconds_per_movement) / seconds_per_movement)
 	
-	print("platform moved")
 	position = new_position
 	
 	# move the rider with the platform
