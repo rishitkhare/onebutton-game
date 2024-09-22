@@ -1,76 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc3r6i4y7vtkl"]
+[gd_scene load_steps=7 format=4 uid="uid://cc3r6i4y7vtkl"]
 
-[ext_resource type="Texture2D" uid="uid://ces8k2gh37el0" path="res://icon.svg" id="1_1amia"]
+[ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_aytfx"]
 [ext_resource type="Script" path="res://Player/playermovement.gd" id="2_xq2pe"]
 [ext_resource type="SpriteFrames" uid="uid://5neagwvg8waa" path="res://Player/playerspriteframes.tres" id="3_begxd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hu4i"]
-size = Vector2(128, 128)
+[ext_resource type="Script" path="res://Player/arc.gd" id="4_51pq1"]
+[ext_resource type="PackedScene" uid="uid://br55nv4qbof7p" path="res://LevelWidgets/MovingPlatform/moving_platform.tscn" id="5_qmvpr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jh41"]
-size = Vector2(32, 32)
+size = Vector2(14, 14)
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
 
 [node name="LevelGeometry" type="Node" parent="."]
 
-[node name="squarecollider" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(71, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
-[node name="squarecollider2" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(200, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider2"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider2"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
-[node name="squarecollider3" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(321, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider3"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider3"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
-[node name="squarecollider4" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(430, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider4"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider4"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
-[node name="squarecollider5" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(545, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider5"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider5"]
-shape = SubResource("RectangleShape2D_4hu4i")
-
-[node name="squarecollider6" type="StaticBody2D" parent="LevelGeometry"]
-position = Vector2(661, 260)
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/squarecollider6"]
-texture = ExtResource("1_1amia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/squarecollider6"]
-shape = SubResource("RectangleShape2D_4hu4i")
+[node name="TileMapLayer" type="TileMapLayer" parent="LevelGeometry"]
+texture_filter = 1
+position = Vector2(-294, -78)
+tile_map_data = PackedByteArray("AAABAAoAAAAGAAAAAAABAAsAAAAGAAEAAAACAAoAAAAHAAAAAAACAAsAAAAHAAEAAAAHAA4AAAAQAAIAAAAIAA4AAAAQAAIAAAAJAA4AAAAQAAIAAAAKAA4AAAAQAAIAAAALAA4AAAAQAAIAAAAMAA4AAAAQAAIAAAANAA4AAAAQAAIAAAAOAA4AAAAQAAIAAAAPAA4AAAAQAAIAAAAQAA4AAAAQAAIAAAARAA4AAAAQAAIAAAASAA4AAAAQAAIAAAAUAAsAAAARAAwAAAAUAAoAAAARAAsAAAAUAAkAAAARAAoAAAAUAAgAAAARAAQAAAAWAA0AAAAIAAIAAAAXAA0AAAAIAAIAAAAYAA0AAAAIAAIAAAAZAA0AAAAIAAIAAAAaAA0AAAAIAAIAAAAbAA0AAAAIAAIAAAAcAA0AAAAIAAIAAAAdAA0AAAAIAAIAAAALAAcAAAAQAAIAAAAMAAcAAAAQAAIAAAANAAcAAAAQAAIAAAAOAAcAAAAQAAIAAAAPAAcAAAAQAAIAAAAQAAcAAAAQAAIAAAARAAcAAAAQAAIAAAASAAcAAAAQAAIAAAATAAcAAAAQAAIAAAACABAAAAAQAAIAAAADABAAAAAQAAIAAAAEABAAAAAQAAIAAAAFABAAAAAQAAIAAAAGABAAAAAQAAIAAAAHABAAAAAQAAIAAAAIABAAAAAQAAIAAAAJABAAAAAQAAIAAAAKABAAAAAQAAIAAAAHAA8AAAAQAAAAAAAJAA8AAAAQAAAAAAAKAA8AAAAQAAAAAAALAAgAAAAQAAIAAAAMAAgAAAAQAAIAAAANAAgAAAAQAAIAAAAOAAgAAAAQAAIAAAAPAAgAAAAQAAIAAAAQAAgAAAAQAAIAAAARAAgAAAAQAAIAAAASAAgAAAAQAAIAAAATAAgAAAAQAAIAAAATAA4AAAAKAAAAAAATAA8AAAAKAAEAAAAUAA4AAAALAAAAAAAUAA8AAAALAAEAAAATABAAAAAKAAIAAAATABEAAAAKAAMAAAAUABAAAAALAAIAAAAUABEAAAALAAMAAAATABIAAAAKAAIAAAATABMAAAAKAAMAAAAUABIAAAALAAIAAAAUABMAAAALAAMAAAATABQAAAAKAAIAAAATABUAAAAKAAMAAAAUABQAAAALAAIAAAAUABUAAAALAAMAAAATABYAAAAKAAIAAAATABcAAAAKAAMAAAAUABYAAAALAAIAAAAUABcAAAALAAMAAAARABAAAAAIAAMAAAARABEAAAAIAAMAAAASABAAAAAJAAMAAAASABEAAAAJAAMAAAARABIAAAAIAAIAAAARABMAAAAIAAMAAAASABIAAAAJAAIAAAASABMAAAAJAAMAAAARABQAAAAIAAIAAAARABUAAAAIAAMAAAASABQAAAAJAAIAAAASABUAAAAJAAMAAAARABYAAAAIAAIAAAARABcAAAAIAAMAAAASABYAAAAJAAIAAAASABcAAAAJAAMAAAAPABYAAAAIAAIAAAAPABcAAAAIAAMAAAAQABYAAAAJAAIAAAAQABcAAAAJAAMAAAAPABQAAAAIAAIAAAAPABUAAAAIAAMAAAAQABQAAAAJAAIAAAAQABUAAAAJAAMAAAAPABIAAAAIAAIAAAAPABMAAAAIAAMAAAAQABIAAAAJAAIAAAAQABMAAAAJAAMAAAAPABAAAAAIAAMAAAAPABEAAAAIAAMAAAAQABAAAAAJAAMAAAAQABEAAAAJAAMAAAARAA8AAAAIAAIAAAASAA8AAAAJAAIAAAAPAA8AAAAIAAIAAAAQAA8AAAAJAAIAAAAhABQAAAAMAA4AAAAhABUAAAAMAA8AAAAiABQAAAANAA4AAAAiABUAAAANAA8AAAAhABMAAAAMAA0AAAAiABMAAAANAA0AAAAhABIAAAAMAA0AAAAiABIAAAANAA0AAAAhABEAAAAMAA0AAAAiABEAAAANAA0AAAAhABAAAAAMAA0AAAAiABAAAAANAA0AAAAhAA8AAAAMAA0AAAAiAA8AAAANAA0AAAAhAA4AAAAMAA0AAAAiAA4AAAANAA0AAAAhAA0AAAAMAA0AAAAiAA0AAAANAA0AAAAhAAwAAAAMAAwAAAAiAAwAAAANAAwAAAAhAAsAAAAMAAwAAAAiAAsAAAANAAwAAAAhAAoAAAAMAAwAAAAiAAoAAAANAAwAAAAeAA0AAAAQAAkAAAAeAA4AAAAQAAoAAAAeAA8AAAAQAAsAAAAeABAAAAAQAAwAAAAeABEAAAAQAA0AAAAfAA0AAAARAAkAAAAfAA4AAAARAAoAAAAfAA8AAAARAAsAAAAfABAAAAARAAwAAAAfABEAAAARAA0AAAAMAAkAAAAQAAkAAAAMAAoAAAAQAAoAAAAMAAsAAAAQAAsAAAAMAAwAAAAQAAwAAAAMAA0AAAAQAA0AAAANAAkAAAARAAkAAAANAAoAAAARAAoAAAANAAsAAAARAAsAAAANAAwAAAARAAwAAAANAA0AAAARAA0AAAAQAAkAAAAQAAkAAAAQAAoAAAAQAAoAAAAQAAsAAAAQAAsAAAAQAAwAAAAQAAwAAAAQAA0AAAAQAA0AAAARAAkAAAARAAkAAAARAAoAAAARAAoAAAARAAsAAAARAAsAAAARAAwAAAARAAwAAAARAA0AAAARAA0AAAAVAA0AAAAMAAQAAAAUAA0AAAARAA0AAAAUAAwAAAARAA0AAAAVAAgAAAARAAQAAAAWAAgAAAARAAQAAAAXAAgAAAARAAQAAAAYAAgAAAARAAQAAAAZAAgAAAARAAQAAAAaAAgAAAARAAQAAAAbAAgAAAARAAQAAAATAAoAAAAQAAsAAAATAAsAAAAQAAwAAAATAAwAAAAQAA0AAAATAA0AAAAQAA0AAAATAAkAAAAQAAoAAAAnAAwAAAAHAAwAAAAnAA0AAAAKAA0AAAAoAAwAAAAHAAwAAAAoAA0AAAAHAA0AAAApAAwAAAAHAAwAAAApAA0AAAAIAA0AAAAqAAwAAAAHAAwAAAAqAA0AAAAJAA0AAAArAAwAAAAHAAwAAAArAA0AAAAKAA0AAAAxAAwAAAAMAAwAAAAxAA0AAAAMAAwAAAAyAAwAAAANAAwAAAAyAA0AAAANAAwAAAAzAAwAAAAMAAwAAAAzAA0AAAAMAAwAAAA0AAwAAAANAAwAAAA0AA0AAAANAAwAAAA1AAwAAAAMAAwAAAA1AA0AAAAMAAwAAAA2AAwAAAANAAwAAAA2AA0AAAANAAwAAAA5AAwAAAAMAAwAAAA5AA0AAAAMAAwAAAA6AAwAAAANAAwAAAA6AA0AAAANAAwAAAA7AAwAAAAMAAwAAAA7AA0AAAAMAAwAAAA8AAwAAAANAAwAAAA8AA0AAAANAAwAAAA9AAwAAAAMAAwAAAA9AA0AAAAMAAwAAAA+AAwAAAANAAwAAAA+AA0AAAANAAwAAAAjAAwAAAAGAAwAAAAkAAwAAAAHAAwAAAAlAAwAAAAHAAwAAAAmAAwAAAAHAAwAAAAsAAwAAAAHAAwAAAAtAAwAAAAHAAwAAAAuAAwAAAAHAAwAAAAvAAwAAAAHAAwAAAAwAAwAAAAHAAwAAAAkAA0AAAAHAA0AAAAlAA0AAAAIAA0AAAAmAA0AAAAJAA0AAAAsAA0AAAAHAA0AAAAtAA0AAAAIAA0AAAAuAA0AAAAJAA0AAAAvAA0AAAAKAA0AAAAwAA0AAAALAA0AAAAjAA0AAAAGAA0AAAAxAAcAAAAMABAAAAAxAAYAAAAMAA8AAAAxAAQAAAAMAA0AAAAxAAUAAAAMAA4AAAAyAAQAAAANAA0AAAAyAAUAAAANAA4AAAAyAAYAAAANAA8AAAAyAAcAAAANABAAAAA=")
+tile_set = ExtResource("1_aytfx")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(280, 180)
+position = Vector2(181, 104)
 script = ExtResource("2_xq2pe")
+
+[node name="arc" type="Node2D" parent="Player"]
+script = ExtResource("4_51pq1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 modulate = Color(1, 0.0627451, 0.360784, 1)
@@ -83,5 +38,36 @@ shape = SubResource("RectangleShape2D_8jh41")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-[node name="groundedcheck" type="RayCast2D" parent="Player"]
-target_position = Vector2(0, 27)
+[node name="grounded_left" type="RayCast2D" parent="Player"]
+position = Vector2(-7, 0)
+target_position = Vector2(0, 9)
+
+[node name="grounded_right" type="RayCast2D" parent="Player"]
+position = Vector2(7, 0)
+target_position = Vector2(0, 9)
+
+[node name="groundedchecktimer" type="Timer" parent="Player"]
+wait_time = 0.163
+one_shot = true
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="groundedLabel" type="Label" parent="Player/Control"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -34.0
+offset_right = 52.0
+offset_bottom = -11.0
+horizontal_alignment = 1
+
+[node name="Moving Platform" parent="." groups=["Ridable"] instance=ExtResource("5_qmvpr")]
+position = Vector2(297, 90)
+
+[node name="Moving Platform2" parent="." groups=["Ridable"] instance=ExtResource("5_qmvpr")]
+position = Vector2(458, 58)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[connection signal="timeout" from="Player/groundedchecktimer" to="Player" method="_on_groundedchecktimer_timeout"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://br55nv4qbof7p"]
+
+[ext_resource type="Script" path="res://LevelWidgets/MovingPlatform/moving_platform.gd" id="1_g5v4v"]
+[ext_resource type="Texture2D" uid="uid://ctnllabcs0kdb" path="res://Free Industrial Zone Tileset/moving-plat.png" id="1_oyqti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dduxs"]
+atlas = ExtResource("1_oyqti")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l23cx"]
+atlas = ExtResource("1_oyqti")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1do8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dduxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l23cx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va2ge"]
+size = Vector2(64, 15)
+
+[node name="Moving Platform" type="AnimatableBody2D"]
+texture_filter = 1
+script = ExtResource("1_g5v4v")
+movements = PackedVector2Array(0, 0, 100, 0)
+seconds_per_movement = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1do8l")
+frame_progress = 0.890319
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_va2ge")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -39.0
+offset_top = -62.0
+offset_right = 39.0
+offset_bottom = -39.0
+horizontal_alignment = 1
+vertical_alignment = 1
