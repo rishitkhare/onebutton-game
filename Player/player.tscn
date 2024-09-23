@@ -1,0 +1,139 @@
+[gd_scene load_steps=14 format=3 uid="uid://vjeq4pcr565b"]
+
+[ext_resource type="Script" path="res://Player/arc.gd" id="1_1jupk"]
+[ext_resource type="Script" path="res://Player/playermovement.gd" id="1_vebox"]
+[ext_resource type="Texture2D" uid="uid://dr5j3e7wkunht" path="res://Free Industrial Zone Tileset/jumpline.png" id="2_neged"]
+[ext_resource type="Texture2D" uid="uid://bowmfbl07lodh" path="res://Free Industrial Zone Tileset/jumplineleft.png" id="3_iagvw"]
+[ext_resource type="Texture2D" uid="uid://b8gjv3xv5aof7" path="res://Free Industrial Zone Tileset/jumplineright.png" id="4_36t2t"]
+[ext_resource type="SpriteFrames" uid="uid://5neagwvg8waa" path="res://Player/playerspriteframes.tres" id="5_jflks"]
+[ext_resource type="Script" path="res://screenshake.gd" id="7_4grpo"]
+[ext_resource type="Texture2D" uid="uid://b3tkj70oe16vx" path="res://Free Industrial Zone Tileset/smoke-puff.png" id="8_msigh"]
+
+[sub_resource type="Gradient" id="Gradient_kp2fm"]
+offsets = PackedFloat32Array(0, 0.725714, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ucdjn"]
+gradient = SubResource("Gradient_kp2fm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13hah"]
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+scale_over_velocity_max = 27.78
+color_ramp = SubResource("GradientTexture1D_ucdjn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jh41"]
+size = Vector2(14, 25)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p8y1h"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 2.42
+initial_velocity_max = 8.45
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_over_velocity_max = 27.78
+color_ramp = SubResource("GradientTexture1D_ucdjn")
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-742, 82)
+script = ExtResource("1_vebox")
+
+[node name="JumpTrailUp" type="GPUParticles2D" parent="."]
+position = Vector2(0, -6)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_13hah")
+texture = ExtResource("2_neged")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+
+[node name="JumpTrailLeft" type="GPUParticles2D" parent="."]
+position = Vector2(-4, -6)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_13hah")
+texture = ExtResource("3_iagvw")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+
+[node name="JumpTrailRight" type="GPUParticles2D" parent="."]
+position = Vector2(4, -6)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_13hah")
+texture = ExtResource("4_36t2t")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -17)
+sprite_frames = ExtResource("5_jflks")
+animation = &"DescendingJump"
+autoplay = "Idle"
+
+[node name="arc" type="Node2D" parent="."]
+script = ExtResource("1_1jupk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_8jh41")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -53)
+position_smoothing_enabled = true
+script = ExtResource("7_4grpo")
+
+[node name="ScreenShakeTimer" type="Timer" parent="Camera2D"]
+one_shot = true
+
+[node name="grounded_left" type="RayCast2D" parent="."]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 9)
+
+[node name="grounded_right" type="RayCast2D" parent="."]
+position = Vector2(6, 0)
+target_position = Vector2(0, 9)
+
+[node name="groundedchecktimer" type="Timer" parent="."]
+wait_time = 0.163
+one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="groundedLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -52.0
+offset_top = -52.0
+offset_right = 52.0
+offset_bottom = -29.0
+horizontal_alignment = 1
+
+[node name="LandingParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_p8y1h")
+texture = ExtResource("8_msigh")
+one_shot = true
+explosiveness = 0.74
+
+[node name="JumpingParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_p8y1h")
+texture = ExtResource("8_msigh")
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="timeout" from="Camera2D/ScreenShakeTimer" to="Camera2D" method="_on_screen_shake_timer_timeout"]
+[connection signal="timeout" from="groundedchecktimer" to="." method="_on_groundedchecktimer_timeout"]

@@ -35,6 +35,7 @@ const TERMINAL_VEL = 600
 # stores how long the button has been pressed for
 @onready var buttonheld_duration : float
 
+@onready var spawn_point : Vector2 = position
 
 func _ready():
 	ground_raycast_left = $grounded_left
