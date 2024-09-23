@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://cc3r6i4y7vtkl"]
+[gd_scene load_steps=10 format=4 uid="uid://cc3r6i4y7vtkl"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_aytfx"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_7j0om"]
-[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/Spikes/spikes.tscn" id="3_nqycw"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="3_nqycw"]
+[ext_resource type="PackedScene" uid="uid://c4vueb864s0hc" path="res://LevelWidgets/GemStone/gem_stone.tscn" id="4_fxeva"]
 [ext_resource type="PackedScene" uid="uid://br55nv4qbof7p" path="res://LevelWidgets/MovingPlatform/moving_platform.tscn" id="5_qmvpr"]
 [ext_resource type="Texture2D" uid="uid://bwsm52fj63jpx" path="res://Free Industrial Zone Tileset/2 Background/1.png" id="11_osfoo"]
 [ext_resource type="Texture2D" uid="uid://b1dmlrjo84oj7" path="res://Free Industrial Zone Tileset/2 Background/2.png" id="12_om1y1"]
@@ -22,10 +23,10 @@ tile_map_data = PackedByteArray("AAABAAoAAAAGAAAAAAABAAsAAAAGAAEAAAACAAoAAAAHAAA
 tile_set = ExtResource("1_aytfx")
 
 [node name="Moving Platform" parent="LevelGeometry" groups=["Ridable"] instance=ExtResource("5_qmvpr")]
-position = Vector2(299, 23)
+position = Vector2(-754, -25)
 
 [node name="Moving Platform2" parent="LevelGeometry" groups=["Ridable"] instance=ExtResource("5_qmvpr")]
-position = Vector2(460, -9)
+position = Vector2(-593, -57)
 
 [node name="Moving Platform3" parent="LevelGeometry" groups=["Ridable"] instance=ExtResource("5_qmvpr")]
 position = Vector2(747, 55)
@@ -45,8 +46,19 @@ movements = PackedVector2Array(0, -100, 0, 0)
 
 [node name="Spikes" parent="LevelGeometry" instance=ExtResource("3_nqycw")]
 
+[node name="GemStone" parent="LevelGeometry" instance=ExtResource("4_fxeva")]
+
+[node name="GemStone3" parent="LevelGeometry" instance=ExtResource("4_fxeva")]
+position = Vector2(-850, 83)
+
+[node name="GemStone4" parent="LevelGeometry" instance=ExtResource("4_fxeva")]
+position = Vector2(-650, -8)
+
+[node name="GemStone5" parent="LevelGeometry" instance=ExtResource("4_fxeva")]
+position = Vector2(-672, 75)
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_7j0om")]
-position = Vector2(253, 153)
+position = Vector2(318, 132)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

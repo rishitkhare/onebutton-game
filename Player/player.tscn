@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vjeq4pcr565b"]
+[gd_scene load_steps=15 format=3 uid="uid://vjeq4pcr565b"]
 
 [ext_resource type="Script" path="res://Player/arc.gd" id="1_1jupk"]
 [ext_resource type="Script" path="res://Player/playermovement.gd" id="1_vebox"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bowmfbl07lodh" path="res://Free Industrial Zone Tileset/jumplineleft.png" id="3_iagvw"]
 [ext_resource type="Texture2D" uid="uid://b8gjv3xv5aof7" path="res://Free Industrial Zone Tileset/jumplineright.png" id="4_36t2t"]
 [ext_resource type="SpriteFrames" uid="uid://5neagwvg8waa" path="res://Player/playerspriteframes.tres" id="5_jflks"]
+[ext_resource type="Script" path="res://Player/animator.gd" id="6_m8sgu"]
 [ext_resource type="Script" path="res://screenshake.gd" id="7_4grpo"]
 [ext_resource type="Texture2D" uid="uid://b3tkj70oe16vx" path="res://Free Industrial Zone Tileset/smoke-puff.png" id="8_msigh"]
 
@@ -76,6 +77,7 @@ position = Vector2(-1, -17)
 sprite_frames = ExtResource("5_jflks")
 animation = &"DescendingJump"
 autoplay = "Idle"
+script = ExtResource("6_m8sgu")
 
 [node name="arc" type="Node2D" parent="."]
 script = ExtResource("1_1jupk")

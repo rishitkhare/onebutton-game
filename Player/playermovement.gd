@@ -37,6 +37,8 @@ const TERMINAL_VEL = 600
 
 @onready var spawn_point : Vector2 = position
 
+@onready var double_jump : bool = false
+
 func _ready():
 	ground_raycast_left = $grounded_left
 	ground_raycast_right = $grounded_right
@@ -47,10 +49,15 @@ func _ready():
 	
 func _input(event):
 	# jump happens when the spacebar is released
-	if event.is_action_released("jump") && grounded:
+	if event.is_action_released("jump") && (grounded || double_jump):
 		var jump_power = get_jump_power()
 		velocity = aim_vector * JUMP_PWR * jump_power
 		grounded = false
+		
+		double_jump = false
+		
+		if(TimeScale.get_time_scale() != 1):
+			TimeScale.set_time_scale(1)
 		
 		# render particles
 		jumping_particles.restart()
@@ -82,9 +89,11 @@ func get_jump_power() -> float:
 	return clampf(0.9 + buttonheld_duration / 0.9, 1, 2)
 	
 # run every frame
-func _physics_process(delta):
+func _physics_process(unscaled_time):
+	var delta : float = unscaled_time * TimeScale.get_time_scale()
+	
 	# increment the timer that tracks how long the jump has been held for
-	track_button_press(delta)
+	track_button_press(unscaled_time)
 	
 	# accelerate towards the ground (gravity)
 	velocity.y += GRAVITY * delta
@@ -97,25 +106,40 @@ func _physics_process(delta):
 		grounded = !grounded
 		if grounded:
 			landing_particles.restart()
+			
+	if double_jump:
+		sprite.modulate = Color(110,110,110)
+	else:
+		sprite.modulate = Color(1,1,1)
 	
 	if grounded:
-		# bring back the arc if it previously disappeared
-		arc_renderer.fade = false
+		# double jump turns off on the ground
+		double_jump = false
 		
 		# animate the sprite to idle
 		sprite.play("Idle")
 		
 		# when touching the ground, decelerate
 		velocity.x = velocity.x * 0.9
+	else:
+			
+		if velocity.y < 0:
+			sprite.play("AscendingJump")
+		else:
+			sprite.play("DescendingJump")
+	
+	# is the player allowed to jump?
+	if grounded || double_jump:
+		# bring back the arc if it previously disappeared
+		arc_renderer.fade = false
 		
 		# if the button isn't pressed, move the aim, otherwise
 		# keep the aim constant and show the user the jump as its power increases
 		if not Input.is_action_pressed("jump"):
-			rotate_aim_vector(delta)
+			rotate_aim_vector(unscaled_time)
 			calculate_arc_points(1 * aim_vector * 200)
 		else:
 			calculate_arc_points(get_jump_power() * aim_vector * 200)
-		
 	else:
 		# If the player previously jumped right, the new aim will begin from the right
 		# pointing right, if they previously jumped left, the new aim will begin from the left.
@@ -128,17 +152,12 @@ func _physics_process(delta):
 			aim_vector = Vector2.RIGHT.rotated(-0.7*PI)
 		aim_vector_rotation_dir = ROT_SPEED
 		
-		if velocity.y < 0:
-			sprite.play("AscendingJump")
-		else:
-			sprite.play("DescendingJump")
-		
 	# preserve x velocity before collision - move_and_slide() will set it to zero. Instead of abrupt stop,
 	# we want the player to gently decelerate - this helps them barely squeeze past corners more easily
 	# by preserving some of the initial momentum they had when they snagged the corner.
 	var precollision_xvelo = velocity.x
 	var precollision_yvelo = velocity.y
-	move_and_slide()
+	move_and_slide_with_scale(TimeScale.get_time_scale())
 	
 	# shake the screen on hard landings
 	if velocity.y == 0 && precollision_yvelo  > 230:
@@ -204,3 +223,12 @@ func calculate_arc_points(start_vel : Vector2) -> PackedVector2Array:
 	
 	
 	return points
+	
+func move_and_slide_with_scale(scale: float ) -> void:
+	velocity *= scale
+	move_and_slide()
+	velocity /= scale
+	
+func die():
+	position = spawn_point
+	velocity = Vector2.ZERO

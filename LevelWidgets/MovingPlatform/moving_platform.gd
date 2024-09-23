@@ -12,9 +12,14 @@ extends AnimatableBody2D
 @onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
+	sprite.speed_scale = TimeScale.get_time_scale()
 	sprite.play()
+	TimeScale.on_time_scale_changed.connect(_on_timescale_change)
 
-func _physics_process(delta):
+
+func _physics_process(unscaled_time):
+	var delta = unscaled_time * TimeScale.get_time_scale()
+	
 	# increment t_value, wrap it so that the animation cycles
 	t_value = fmod(t_value + delta, seconds_per_movement * movements.size())
 	var index : int = floor(t_value / seconds_per_movement)
@@ -36,4 +41,6 @@ func _physics_process(delta):
 	else:
 		$Control/Label.text = ""
 		
-		
+
+func _on_timescale_change(value: float) -> void:
+	sprite.speed_scale = value

@@ -15,6 +15,10 @@ run/main_scene="res://gym.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TimeScale="*res://Autoloads/TimeScale.tscn"
+
 [display]
 
 window/size/viewport_width=576

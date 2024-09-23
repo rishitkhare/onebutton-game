@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lw8j4xj613b7"]
+
+[ext_resource type="Script" path="res://Autoloads/time_scale.gd" id="1_xp51f"]
+
+[node name="TimeScale" type="Node"]
+script = ExtResource("1_xp51f")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
