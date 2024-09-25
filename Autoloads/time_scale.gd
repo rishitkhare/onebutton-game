@@ -4,7 +4,16 @@ extends Node
 
 @onready var timer : Timer = $Timer
 
+@warning_ignore("unused_signal")
 signal on_time_scale_changed(value)
+
+@onready var target : float = 1
+
+func _process(delta):
+	if _time_scale < target:
+		set_time_scale(min(_time_scale + 1.9 * delta, target))
+	elif _time_scale > target:
+		set_time_scale(target)
 
 func set_time_scale(value: float) -> void:
 	_time_scale = value
@@ -14,10 +23,12 @@ func get_time_scale() -> float:
 	return _time_scale
 	
 func temporary_slow_mo(scale, duration):
-	set_time_scale(scale)
+	target = scale
 	timer.wait_time = duration
 	timer.start()
+	
+
 
 
 func _on_timer_timeout() -> void:
-	set_time_scale(1)
+	target = 1

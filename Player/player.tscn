@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vjeq4pcr565b"]
+[gd_scene load_steps=18 format=3 uid="uid://vjeq4pcr565b"]
 
 [ext_resource type="Script" path="res://Player/arc.gd" id="1_1jupk"]
 [ext_resource type="Script" path="res://Player/playermovement.gd" id="1_vebox"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Player/animator.gd" id="6_m8sgu"]
 [ext_resource type="Script" path="res://screenshake.gd" id="7_4grpo"]
 [ext_resource type="Texture2D" uid="uid://b3tkj70oe16vx" path="res://Free Industrial Zone Tileset/smoke-puff.png" id="8_msigh"]
+[ext_resource type="Script" path="res://Player/particle_timescale.gd" id="9_hkfj7"]
+[ext_resource type="Texture2D" uid="uid://djnqsujr53ncu" path="res://LevelWidgets/GemStone/light.webp" id="10_wsosi"]
 
 [sub_resource type="Gradient" id="Gradient_kp2fm"]
 offsets = PackedFloat32Array(0, 0.725714, 1)
@@ -25,6 +27,17 @@ color_ramp = SubResource("GradientTexture1D_ucdjn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jh41"]
 size = Vector2(14, 25)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvbl6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 450, 1)
+spread = 0.0
+initial_velocity_min = 251.19
+initial_velocity_max = 543.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p8y1h"]
 lifetime_randomness = 1.0
@@ -75,8 +88,9 @@ explosiveness = 0.5
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -17)
 sprite_frames = ExtResource("5_jflks")
-animation = &"DescendingJump"
+animation = &"AscendingJump"
 autoplay = "Idle"
+frame_progress = 0.0511319
 script = ExtResource("6_m8sgu")
 
 [node name="arc" type="Node2D" parent="."]
@@ -93,6 +107,14 @@ script = ExtResource("7_4grpo")
 
 [node name="ScreenShakeTimer" type="Timer" parent="Camera2D"]
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+position = Vector2(320, -178)
+rotation = 2.24192
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_nvbl6")
+lifetime = 2.0
+script = ExtResource("9_hkfj7")
 
 [node name="grounded_left" type="RayCast2D" parent="."]
 position = Vector2(-6, 0)
@@ -136,6 +158,12 @@ process_material = SubResource("ParticleProcessMaterial_p8y1h")
 texture = ExtResource("8_msigh")
 one_shot = true
 explosiveness = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-2, -11)
+energy = 0.2
+texture = ExtResource("10_wsosi")
+texture_scale = 0.6
 
 [connection signal="timeout" from="Camera2D/ScreenShakeTimer" to="Camera2D" method="_on_screen_shake_timer_timeout"]
 [connection signal="timeout" from="groundedchecktimer" to="." method="_on_groundedchecktimer_timeout"]

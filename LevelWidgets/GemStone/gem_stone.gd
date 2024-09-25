@@ -3,13 +3,14 @@ extends Area2D
 @onready var time_elapsed : float = 0
 
 @onready var sprite : Sprite2D = $Sprite
+@onready var light : PointLight2D = $Sprite/PointLight2D
 
 @onready var active = true
 
 @onready var explosion_particles : GPUParticles2D = $explosion
 
 func _process(delta: float) -> void:
-	var scaled_delta : float = 4 * delta * TimeScale.get_time_scale()
+	var scaled_delta : float = 2 * delta * TimeScale.get_time_scale()
 	
 	time_elapsed += scaled_delta
 	
@@ -25,10 +26,11 @@ func _process(delta: float) -> void:
 	
 	sprite.scale.x = clampf(sprite.scale.x, 0, 1)
 	sprite.scale.y = sprite.scale.x
+	light.scale = sprite.scale * 0.5
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") && active:
-		TimeScale.temporary_slow_mo(0.1, 2.5)
+		TimeScale.temporary_slow_mo(0.1, 2)
 		body.double_jump = true
 		body.get_node("Camera2D").shake_screen(0.5,2)
 		modulate = Color(10,10,10)

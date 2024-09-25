@@ -6,7 +6,7 @@ const ROT_SPEED = 0.6
 const JUMP_PWR = 200
 
 const GRAVITY = 600
-const TERMINAL_VEL = 600
+const TERMINAL_VEL = 350
 
 @onready var aim_vector = Vector2.UP
 @onready var aim_vector_rotation_dir = -ROT_SPEED
@@ -23,6 +23,8 @@ const TERMINAL_VEL = 600
 @onready var jump_trail_left : GPUParticles2D = $JumpTrailLeft
 @onready var jump_trail_right : GPUParticles2D = $JumpTrailRight
 @onready var jump_trail_up : GPUParticles2D = $JumpTrailUp
+
+@onready var light : Light2D = $PointLight2D
 
 # screenshake
 @onready var screenshake : Camera2D = $Camera2D
@@ -57,7 +59,9 @@ func _input(event):
 		double_jump = false
 		
 		if(TimeScale.get_time_scale() != 1):
+			TimeScale.target = 1
 			TimeScale.set_time_scale(1)
+			
 		
 		# render particles
 		jumping_particles.restart()
@@ -109,8 +113,11 @@ func _physics_process(unscaled_time):
 			
 	if double_jump:
 		sprite.modulate = Color(110,110,110)
+		light.energy = min(light.energy + (delta * 20), 0.3)
 	else:
 		sprite.modulate = Color(1,1,1)
+		light.energy = max(light.energy - (delta * 0.1), 0.2)
+	light.texture_scale = light.energy + 0.4
 	
 	if grounded:
 		# double jump turns off on the ground
@@ -224,10 +231,10 @@ func calculate_arc_points(start_vel : Vector2) -> PackedVector2Array:
 	
 	return points
 	
-func move_and_slide_with_scale(scale: float ) -> void:
-	velocity *= scale
+func move_and_slide_with_scale(scaled: float ) -> void:
+	velocity *= scaled
 	move_and_slide()
-	velocity /= scale
+	velocity /= scaled
 	
 func die():
 	position = spawn_point
