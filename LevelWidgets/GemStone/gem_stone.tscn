@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4vueb864s0hc"]
+
+[ext_resource type="Script" path="res://LevelWidgets/GemStone/gem_stone.gd" id="1_i4f42"]
+[ext_resource type="Texture2D" uid="uid://ciykiamyiso5y" path="res://LevelWidgets/GemStone/GemStone.png" id="2_xpuuu"]
+[ext_resource type="Texture2D" uid="uid://b8k2iv6ihg1q3" path="res://LevelWidgets/GemStone/Gem-ring.png" id="3_csoxu"]
+[ext_resource type="Texture2D" uid="uid://b3tkj70oe16vx" path="res://Free Industrial Zone Tileset/smoke-puff.png" id="3_fpaxy"]
+[ext_resource type="Texture2D" uid="uid://djnqsujr53ncu" path="res://LevelWidgets/GemStone/light.webp" id="5_yf5dd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f2607"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 2, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_lpxyv"]
+_data = [Vector2(0.63124, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pic4e"]
+curve = SubResource("Curve_lpxyv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vurks"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 55.93
+initial_velocity_max = 66.06
+gravity = Vector3(0, 0, 0)
+damping_min = 30.115
+damping_max = 35.379
+scale_min = 0.4
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_pic4e")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jrep"]
+size = Vector2(14, 17)
+
+[node name="GemStone" type="Area2D"]
+position = Vector2(385, -46)
+script = ExtResource("1_i4f42")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_xpuuu")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite"]
+color = Color(1, 0.5815, 0.19, 1)
+energy = 0.5
+texture = ExtResource("5_yf5dd")
+texture_scale = 0.4
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+texture = ExtResource("3_csoxu")
+
+[node name="sparkles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 9)
+process_material = SubResource("ParticleProcessMaterial_f2607")
+
+[node name="explosion" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_vurks")
+texture = ExtResource("3_fpaxy")
+lifetime = 2.4
+one_shot = true
+explosiveness = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0jrep")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 2.7
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exit"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

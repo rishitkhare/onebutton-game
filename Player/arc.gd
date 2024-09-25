@@ -5,7 +5,8 @@ var fade = false
 
 func _draw():
 	for point in _points:
-		draw_circle(to_local(point), 2, Color(1,1,1,1 - to_local(point).length_squared() / 8100))
+		draw_circle(to_local(point), 2, Color(1,1,1,1 - to_local(point).length_squared() / 8100), true)
+		draw_circle(to_local(point), 2.5, Color(0,0,0,1 - to_local(point).length_squared() / 8100), false, 1)
 		
 func _process(delta):
 	queue_redraw()
