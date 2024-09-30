@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b0x5oiqyr4gop"]
+[gd_scene load_steps=9 format=4 uid="uid://b0x5oiqyr4gop"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_a1pa8"]
 [ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="2_lcgog"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dmlrjo84oj7" path="res://Free Industrial Zone Tileset/2 Background/2.png" id="4_e17u2"]
 [ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="5_so0nl"]
 [ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="6_lbadx"]
+[ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_0iivy"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -100,3 +101,6 @@ offset_top = 322.0
 offset_right = 4473.0
 offset_bottom = 736.0
 color = Color(0.337255, 0.415686, 0.537255, 1)
+
+[node name="Flag" parent="." instance=ExtResource("8_0iivy")]
+position = Vector2(-779, 237)
