@@ -13,12 +13,7 @@ func changeLevel():
 	current_level += 1
 	if current_level >= levels.size():
 		current_level = 0  # Loop back to the first level if last level is reached
-	change_scence(levels[current_level])
+	call_deferred("change_scene", levels[current_level])
 
-func change_scence(scene):
+func change_scene(scene):
 	get_tree().change_scene_to_file(scene)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
