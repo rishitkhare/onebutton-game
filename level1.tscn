@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_0b0gf"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(8, -10)
 
 [node name="LevelGeometry" type="Node2D" parent="."]
 position = Vector2(0, 147)
@@ -104,3 +105,7 @@ color = Color(0.337255, 0.415686, 0.537255, 1)
 
 [node name="Flag" parent="." instance=ExtResource("8_0b0gf")]
 position = Vector2(-261, 79)
+
+[node name="Spikes" parent="." instance=ExtResource("2_1pn5k")]
+position = Vector2(-499, 1152)
+scale = Vector2(100, 100)

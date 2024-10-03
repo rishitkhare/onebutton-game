@@ -110,3 +110,7 @@ position = Vector2(-356, -24)
 
 [node name="Spikes5" parent="." instance=ExtResource("8_nt3jp")]
 position = Vector2(-325, -24)
+
+[node name="Spikes7" parent="." instance=ExtResource("8_nt3jp")]
+position = Vector2(-533, 1055)
+scale = Vector2(100, 100)
