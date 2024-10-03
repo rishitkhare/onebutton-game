@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Onebutton-game"
-run/main_scene="res://gym.tscn"
+run/main_scene="res://level1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 TimeScale="*res://Autoloads/TimeScale.tscn"
-LevelManager="*res://Autoloads/level_manager.gd"
+LevelManager="*res://Autoloads/LevelManager.tscn"
 
 [display]
 

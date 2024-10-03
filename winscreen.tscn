@@ -6,6 +6,33 @@
 [ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="4_07oan"]
 [ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="5_0e1q8"]
 
+[sub_resource type="Animation" id="Animation_hm4jp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Anchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(217, -322)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/Anchor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.179769]
+}
+
 [sub_resource type="Animation" id="Animation_c8nao"]
 resource_name = "new_animation"
 length = 3.0
@@ -32,33 +59,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.0947323, 1),
 "update": 0,
 "values": [0.0, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_hm4jp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/Anchor:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(217, -322)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/Anchor:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.179769]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fqmie"]

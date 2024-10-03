@@ -6,6 +6,9 @@ var levels = ["res://level1.tscn", "res://level2.tscn", "res://level3.tscn", "re
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	
+func animated_change_level():
+	$Control/AnimationPlayer.play("woop")
 
 # Called when player touches the flag, keep a global counter to keep 
 # track of levels
