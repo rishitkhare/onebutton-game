@@ -162,6 +162,7 @@ explosiveness = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-2, -11)
 energy = 0.2
+range_layer_min = -100
 texture = ExtResource("10_wsosi")
 texture_scale = 0.6
 

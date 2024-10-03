@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_aytfx"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_7j0om"]
-[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="3_nqycw"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/Spikes/spikes.tscn" id="3_nqycw"]
 [ext_resource type="PackedScene" uid="uid://c4vueb864s0hc" path="res://LevelWidgets/GemStone/gem_stone.tscn" id="4_fxeva"]
 [ext_resource type="PackedScene" uid="uid://br55nv4qbof7p" path="res://LevelWidgets/MovingPlatform/moving_platform.tscn" id="5_qmvpr"]
 [ext_resource type="Texture2D" uid="uid://bwsm52fj63jpx" path="res://Free Industrial Zone Tileset/2 Background/1.png" id="11_osfoo"]

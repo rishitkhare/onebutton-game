@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cay4pqsnm4l4"]
+[gd_scene load_steps=10 format=4 uid="uid://bco0jdpsrwn1w"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_5d8k0"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_ihs62"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="6_w8luf"]
 [ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="7_kdrlh"]
 [ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_fdlgx"]
-[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="8_nt3jp"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/Spikes/spikes.tscn" id="8_nt3jp"]
+[ext_resource type="PackedScene" uid="uid://cfsuddqw8sbjg" path="res://LevelWidgets/Spikes/deathzone.tscn" id="9_6v41n"]
 
 [node name="Node2D3" type="Node2D"]
 
@@ -111,6 +112,6 @@ position = Vector2(-356, -24)
 [node name="Spikes5" parent="." instance=ExtResource("8_nt3jp")]
 position = Vector2(-325, -24)
 
-[node name="Spikes7" parent="." instance=ExtResource("8_nt3jp")]
-position = Vector2(-533, 1055)
-scale = Vector2(100, 100)
+[node name="Deathzone" parent="." instance=ExtResource("9_6v41n")]
+position = Vector2(-820, 450)
+scale = Vector2(4.4, 1)

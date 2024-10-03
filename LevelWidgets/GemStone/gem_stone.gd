@@ -11,6 +11,7 @@ extends Area2D
 
 func _process(delta: float) -> void:
 	var scaled_delta : float = 2 * delta * TimeScale.get_time_scale()
+
 	
 	time_elapsed += scaled_delta
 	

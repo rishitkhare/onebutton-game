@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://d3wnkluwfmfxv"]
+[gd_scene load_steps=12 format=4 uid="uid://282neh2rnopj"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_kuf2u"]
-[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="2_ebxoo"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/Spikes/spikes.tscn" id="2_ebxoo"]
 [ext_resource type="PackedScene" uid="uid://br55nv4qbof7p" path="res://LevelWidgets/MovingPlatform/moving_platform.tscn" id="2_r2qat"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_4013k"]
 [ext_resource type="Texture2D" uid="uid://bwsm52fj63jpx" path="res://Free Industrial Zone Tileset/2 Background/1.png" id="4_qpmfy"]
@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="6_p8311"]
 [ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="7_16n71"]
 [ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_qh2ap"]
+[ext_resource type="PackedScene" uid="uid://cfsuddqw8sbjg" path="res://LevelWidgets/Spikes/deathzone.tscn" id="9_w6bgi"]
+[ext_resource type="PackedScene" uid="uid://57y3rkxpmnf0" path="res://LevelWidgets/Checkpoint/Checkpoint.tscn" id="11_wipbr"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="LevelGeometry" type="Node2D" parent="."]
-position = Vector2(0, 147)
 
 [node name="ColorRect" type="ColorRect" parent="LevelGeometry"]
 visible = false
@@ -38,7 +39,7 @@ position = Vector2(-257, -68)
 movements = PackedVector2Array(0, 0, 70, 0)
 
 [node name="Moving Platform3" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
-position = Vector2(52, -87)
+position = Vector2(52, -42)
 movements = PackedVector2Array(0, 0, 0, -150)
 
 [node name="Moving Platform4" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
@@ -51,8 +52,158 @@ position = Vector2(445, -138)
 movements = PackedVector2Array(0, 0, 0, -150)
 seconds_per_movement = 1.0
 
+[node name="Spikes" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-772, 103)
+
+[node name="Spikes2" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-740, 103)
+
+[node name="Spikes3" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-708, 103)
+
+[node name="Spikes4" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-676, 103)
+
+[node name="Spikes5" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-644, 103)
+
+[node name="Spikes6" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-612, 103)
+
+[node name="Spikes7" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-580, 103)
+
+[node name="Spikes8" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-548, 103)
+
+[node name="Spikes9" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-516, 103)
+
+[node name="Spikes10" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-484, 103)
+
+[node name="Spikes11" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-452, 103)
+
+[node name="Spikes12" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-420, 103)
+
+[node name="Spikes13" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-388, 103)
+
+[node name="Spikes14" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-356, 103)
+
+[node name="Spikes15" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-324, 103)
+
+[node name="Spikes16" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-292, 103)
+
+[node name="Spikes17" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-260, 103)
+
+[node name="Spikes18" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-228, 103)
+
+[node name="Spikes19" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-196, 103)
+
+[node name="Spikes20" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-164, 103)
+
+[node name="Spikes21" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-132, 103)
+
+[node name="Spikes22" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-100, 103)
+
+[node name="Spikes23" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-68, 103)
+
+[node name="Spikes24" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-36, 103)
+
+[node name="Spikes25" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(-4, 103)
+
+[node name="Spikes26" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(28, 103)
+
+[node name="Spikes27" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(60, 103)
+
+[node name="Spikes28" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(92, 103)
+
+[node name="Spikes29" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(124, 103)
+
+[node name="Spikes30" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(156, 103)
+
+[node name="Spikes31" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(188, 103)
+
+[node name="Spikes32" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(220, 103)
+
+[node name="Spikes33" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(252, 103)
+
+[node name="Spikes34" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(284, 103)
+
+[node name="Spikes35" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(316, 103)
+
+[node name="Spikes36" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(348, 103)
+
+[node name="Spikes37" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(380, 103)
+
+[node name="Spikes38" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(412, 103)
+
+[node name="Spikes39" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(444, 103)
+
+[node name="Spikes40" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(476, 103)
+
+[node name="Spikes41" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(508, 103)
+
+[node name="Spikes42" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(540, 103)
+
+[node name="Spikes43" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(572, 103)
+
+[node name="Spikes44" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(604, 103)
+
+[node name="Spikes45" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(636, 103)
+
+[node name="Spikes46" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(668, 103)
+
+[node name="Spikes47" parent="LevelGeometry" instance=ExtResource("2_ebxoo")]
+position = Vector2(700, 103)
+
+[node name="Checkpoint" parent="LevelGeometry" instance=ExtResource("11_wipbr")]
+position = Vector2(-676, -7)
+
+[node name="Checkpoint2" parent="LevelGeometry" instance=ExtResource("11_wipbr")]
+position = Vector2(-370, -55)
+
+[node name="Checkpoint3" parent="LevelGeometry" instance=ExtResource("11_wipbr")]
+position = Vector2(333, -151)
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_4013k")]
-position = Vector2(-864, 239)
+position = Vector2(-864, 96)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -113,8 +264,8 @@ offset_bottom = 736.0
 color = Color(0.337255, 0.415686, 0.537255, 1)
 
 [node name="Flag" parent="." instance=ExtResource("8_qh2ap")]
-position = Vector2(591, -155)
+position = Vector2(586, -310)
 
-[node name="Spikes" parent="." instance=ExtResource("2_ebxoo")]
-position = Vector2(-50, 1074)
-scale = Vector2(100, 100)
+[node name="Deathzone" parent="." instance=ExtResource("9_w6bgi")]
+position = Vector2(-106, 409)
+scale = Vector2(3.76, 1)

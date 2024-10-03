@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=4 uid="uid://bno5t3j1bdkpq"]
+[gd_scene load_steps=10 format=4 uid="uid://bno5t3j1bdkpq"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_6ou53"]
-[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="2_1pn5k"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/Spikes/spikes.tscn" id="2_1pn5k"]
 [ext_resource type="Texture2D" uid="uid://bwsm52fj63jpx" path="res://Free Industrial Zone Tileset/2 Background/1.png" id="2_52n1k"]
 [ext_resource type="Texture2D" uid="uid://b1dmlrjo84oj7" path="res://Free Industrial Zone Tileset/2 Background/2.png" id="2_446f1"]
 [ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="3_qo32t"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="6_lrsay"]
 [ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="7_2h0m3"]
 [ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_0b0gf"]
+[ext_resource type="PackedScene" uid="uid://cfsuddqw8sbjg" path="res://LevelWidgets/Spikes/deathzone.tscn" id="9_5htdj"]
 
 [node name="Node2D2" type="Node2D"]
-position = Vector2(8, -10)
 
 [node name="LevelGeometry" type="Node2D" parent="."]
 position = Vector2(0, 147)
@@ -38,9 +38,6 @@ position = Vector2(-710, 108)
 
 [node name="Spikes3" parent="LevelGeometry" instance=ExtResource("2_1pn5k")]
 position = Vector2(-677, 108)
-
-[node name="Spikes4" parent="LevelGeometry" instance=ExtResource("2_1pn5k")]
-position = Vector2(-645, 108)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("6_lrsay")]
 position = Vector2(-819, 229)
@@ -106,6 +103,6 @@ color = Color(0.337255, 0.415686, 0.537255, 1)
 [node name="Flag" parent="." instance=ExtResource("8_0b0gf")]
 position = Vector2(-261, 79)
 
-[node name="Spikes" parent="." instance=ExtResource("2_1pn5k")]
-position = Vector2(-499, 1152)
-scale = Vector2(100, 100)
+[node name="Deathzone" parent="." instance=ExtResource("9_5htdj")]
+position = Vector2(-526, 480)
+scale = Vector2(3.68, 1)

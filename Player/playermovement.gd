@@ -36,6 +36,7 @@ const TERMINAL_VEL = 350
 
 # stores how long the button has been pressed for
 @onready var buttonheld_duration : float
+@onready var buttonheld_too_long : bool = false
 
 @onready var spawn_point : Vector2 = position
 
@@ -51,38 +52,39 @@ func _ready():
 	
 func _input(event):
 	# jump happens when the spacebar is released
-	if event.is_action_released("jump") && (grounded || double_jump):
-		var jump_power = get_jump_power()
-		velocity = aim_vector * JUMP_PWR * jump_power
-		grounded = false
-		
-		double_jump = false
-		
-		if(TimeScale.get_time_scale() != 1):
-			TimeScale.target = 1
-			TimeScale.set_time_scale(1)
+	if event.is_action_released("jump") && !buttonheld_too_long:
+		if (grounded || double_jump):
+			var jump_power = get_jump_power()
+			velocity = aim_vector * JUMP_PWR * jump_power
+			grounded = false
 			
-		
-		# render particles
-		jumping_particles.restart()
-		if(velocity.x > 110):
-			jump_trail_right.restart()
-		elif(velocity.x < -110):
-			jump_trail_left.restart()
-		else:
-			jump_trail_up.restart()
-		landing_particles.emitting = false
-		
-		# screen shake on charged jumps
-		if jump_power > 1.4:
-			screenshake.shake_screen(0.1, 3.5)
-		
-		# make the arc disappear now that the jump is in motion
-		arc_renderer.fade = true
-		
-		# temporarily disable grounded check, to allow the player to change y-velocity
-		set_raycast_enable(false)
-		ground_timer.start()
+			double_jump = false
+			
+			if(TimeScale.get_time_scale() != 1):
+				TimeScale.target = 1
+				TimeScale.set_time_scale(1)
+				
+			
+			# render particles
+			jumping_particles.restart()
+			if(velocity.x > 110):
+				jump_trail_right.restart()
+			elif(velocity.x < -110):
+				jump_trail_left.restart()
+			else:
+				jump_trail_up.restart()
+			landing_particles.emitting = false
+			
+			# screen shake on charged jumps
+			if jump_power > 1.4:
+				screenshake.shake_screen(0.1, 3.5)
+			
+			# make the arc disappear now that the jump is in motion
+			arc_renderer.fade = true
+			
+			# temporarily disable grounded check, to allow the player to change y-velocity
+			set_raycast_enable(false)
+			ground_timer.start()
 
 # based on how long the button has been held for, determine the power of the jump.
 # power is capped at 2, but cannot go lower than 1. The first 0.9 determines how long the user
@@ -142,11 +144,12 @@ func _physics_process(unscaled_time):
 		
 		# if the button isn't pressed, move the aim, otherwise
 		# keep the aim constant and show the user the jump as its power increases
-		if not Input.is_action_pressed("jump"):
+		if Input.is_action_pressed("jump") && !buttonheld_too_long:
+			calculate_arc_points(get_jump_power() * aim_vector * 200)
+		else:
 			rotate_aim_vector(unscaled_time)
 			calculate_arc_points(1 * aim_vector * 200)
-		else:
-			calculate_arc_points(get_jump_power() * aim_vector * 200)
+			
 	else:
 		# If the player previously jumped right, the new aim will begin from the right
 		# pointing right, if they previously jumped left, the new aim will begin from the left.
@@ -190,8 +193,11 @@ func rotate_aim_vector(delta):
 func track_button_press(delta):
 	if Input.is_action_pressed("jump"):
 		buttonheld_duration += delta
+		if buttonheld_duration > 8:
+			buttonheld_too_long = true
 	else:
 		buttonheld_duration = 0
+		buttonheld_too_long = false
 
 # helper function to enable all grounded raycasts and turn them all off at once.
 func set_raycast_enable(value: bool) -> void:
