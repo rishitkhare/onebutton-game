@@ -14,7 +14,7 @@ void vertex() {
 void fragment() {
 	vec2 uvs = POINT_COORD;
 	float dist = distance(uvs, vec2(0.5,0.5));
-	
+
 	COLOR = vec4(0,0,0,step(size, dist));
 }
 
@@ -27,6 +27,21 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5crj"]
 shader = SubResource("Shader_fl2rw")
 shader_parameter/size = 0.5
+
+[sub_resource type="Animation" id="Animation_i08sx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
 
 [sub_resource type="Animation" id="Animation_tgoo1"]
 resource_name = "woop"
@@ -56,21 +71,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"changeLevel"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_i08sx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ebdj"]
