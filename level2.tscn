@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c7tdfcsbeytel"]
+[gd_scene load_steps=9 format=4 uid="uid://cay4pqsnm4l4"]
 
 [ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_5d8k0"]
 [ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_ihs62"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_fdlgx"]
 [ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="8_nt3jp"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 
 [node name="LevelGeometry" type="Node2D" parent="."]
 position = Vector2(0, 147)
