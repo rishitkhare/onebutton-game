@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=4 uid="uid://bnbnoua18amt8"]
+
+[ext_resource type="TileSet" uid="uid://bdbg42iljcvo3" path="res://leveltileset.tres" id="1_kuf2u"]
+[ext_resource type="PackedScene" uid="uid://cynwmrfce3jor" path="res://LevelWidgets/spikes.tscn" id="2_ebxoo"]
+[ext_resource type="PackedScene" uid="uid://br55nv4qbof7p" path="res://LevelWidgets/MovingPlatform/moving_platform.tscn" id="2_r2qat"]
+[ext_resource type="PackedScene" uid="uid://vjeq4pcr565b" path="res://Player/player.tscn" id="3_4013k"]
+[ext_resource type="Texture2D" uid="uid://bwsm52fj63jpx" path="res://Free Industrial Zone Tileset/2 Background/1.png" id="4_qpmfy"]
+[ext_resource type="Texture2D" uid="uid://b1dmlrjo84oj7" path="res://Free Industrial Zone Tileset/2 Background/2.png" id="5_fj8tr"]
+[ext_resource type="Texture2D" uid="uid://u58fc2atgc7n" path="res://Free Industrial Zone Tileset/2 Background/3.png" id="6_p8311"]
+[ext_resource type="Texture2D" uid="uid://dggsjqujbpcfl" path="res://Free Industrial Zone Tileset/2 Background/4.png" id="7_16n71"]
+[ext_resource type="PackedScene" uid="uid://cjyxwgfv0lgrm" path="res://LevelWidgets/Goal/Flag.tscn" id="8_qh2ap"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LevelGeometry" type="Node2D" parent="."]
+position = Vector2(0, 147)
+
+[node name="ColorRect" type="ColorRect" parent="LevelGeometry"]
+visible = false
+offset_left = -1148.0
+offset_top = -340.0
+offset_right = -1108.0
+offset_bottom = -300.0
+scale = Vector2(53.876, 16.5587)
+color = Color(0.298039, 0.298039, 0.298039, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="LevelGeometry"]
+texture_filter = 1
+position = Vector2(-292, -145)
+tile_map_data = PackedByteArray("AAACABAAAAAQAAIAAAADABAAAAAQAAIAAAAEABAAAAAQAAIAAAAFABAAAAAQAAIAAAAGABAAAAAQAAIAAADm/xAAAAARAAQAAADn/xAAAAAQAAQAAADo/xAAAAARAAQAAADp/xAAAAAQAAQAAADq/xAAAAARAAQAAADr/xAAAAAQAAQAAADs/xAAAAARAAQAAADt/xAAAAAQAAQAAADu/xAAAAARAAQAAADv/xAAAAAQAAQAAADw/xAAAAARAAQAAADx/xAAAAAQAAQAAADy/xAAAAARAAQAAADz/xAAAAAQAAQAAAD0/xAAAAARAAQAAAD1/xAAAAAQAAQAAAD2/xAAAAARAAQAAAD3/xAAAAAQAAQAAAD4/xAAAAARAAQAAAD5/xAAAAAQAAQAAAD6/xAAAAARAAQAAAD7/xAAAAAQAAQAAAD8/xAAAAARAAQAAAD9/xAAAAAQAAQAAAD+/xAAAAARAAQAAAD//xAAAAAQAAQAAAAAABAAAAARAAQAAAABABAAAAARAAQAAADk/xAAAAARAAQAAADl/xAAAAAQAAQAAADi/xAAAAARAAQAAADj/xAAAAAQAAQAAADg/xAAAAARAAQAAADh/xAAAAAQAAQAAADe/xAAAAARAAQAAADf/xAAAAAQAAQAAADc/xAAAAARAAQAAADd/xAAAAAQAAQAAADa/xAAAAARAAQAAADb/xAAAAAQAAQAAADY/xAAAAARAAQAAADZ/xAAAAAQAAQAAADX/xAAAAAQAAQAAAAHABAAAAAQAAQAAAAIABAAAAARAAQAAAAJABAAAAAQAAQAAAAKABAAAAARAAQAAAALABAAAAAQAAQAAAAMABAAAAARAAQAAAANABAAAAAQAAQAAAAOABAAAAARAAQAAAAPABAAAAAQAAQAAAAQABAAAAARAAQAAAARABAAAAAQAAQAAAASABAAAAARAAQAAAATABAAAAAQAAQAAAAUABAAAAARAAQAAAAVABAAAAAQAAQAAAAWABAAAAARAAQAAAAXABAAAAAQAAQAAAAYABAAAAARAAQAAAAZABAAAAAQAAQAAAAaABAAAAARAAQAAAAbABAAAAAQAAQAAAAcABAAAAARAAQAAAAdABAAAAAQAAQAAAAeABAAAAARAAQAAAAfABAAAAAQAAQAAAAgABAAAAARAAQAAADh/wsAAAAKABAAAADi/wsAAAALABAAAADj/wsAAAAMABAAAADk/wsAAAANABAAAADm/wkAAAAKABAAAADn/wkAAAALABAAAADo/wkAAAAMABAAAADp/wkAAAANABAAAAD5/wYAAAAIABAAAAD6/wYAAAAJABAAAAD7/wYAAAAKABAAAAD8/wYAAAALABAAAAAMAAYAAAAIABAAAAANAAYAAAAJABAAAAAOAAYAAAAKABAAAAAPAAYAAAALABAAAAAhABAAAAAQAAIAAAAiABAAAAARAAIAAAAjABAAAAAQAAIAAAAkABAAAAARAAIAAAAlABAAAAAQAAIAAAAmABAAAAARAAIAAAAnABAAAAAQAAIAAAAoABAAAAARAAIAAAApABAAAAAQAAIAAAAqABAAAAARAAIAAAArABAAAAAQAAIAAAAsABAAAAARAAIAAAAtABAAAAAQAAIAAAAuABAAAAARAAIAAAAvABAAAAAQAAIAAAAwABAAAAARAAIAAAAxABAAAAAQAAIAAAAyABAAAAARAAIAAAAzABAAAAAQAAIAAAA0ABAAAAARAAIAAAA1ABAAAAAQAAIAAAA2ABAAAAARAAIAAAA3ABAAAAAQAAIAAAA4ABAAAAARAAIAAAA5ABAAAAAQAAIAAAA6ABAAAAARAAIAAAA7ABAAAAAQAAIAAAA8ABAAAAARAAIAAAA9ABAAAAAQAAIAAAA+ABAAAAARAAIAAAAlAAAAAAAIABAAAAAmAAAAAAAJABAAAAAnAAAAAAAKABAAAAAoAAAAAAALABAAAAA1APf/AAAIABAAAAA2APf/AAAJABAAAAA3APf/AAAKABAAAAA4APf/AAALABAAAAA=")
+tile_set = ExtResource("1_kuf2u")
+
+[node name="Moving Platform" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
+position = Vector2(-555, 8)
+
+[node name="Moving Platform2" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
+position = Vector2(-257, -68)
+movements = PackedVector2Array(0, 0, 70, 0)
+
+[node name="Moving Platform3" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
+position = Vector2(52, -87)
+movements = PackedVector2Array(0, 0, 0, -150)
+
+[node name="Moving Platform4" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
+position = Vector2(208, -93)
+movements = PackedVector2Array(50, 0, 0, 0)
+seconds_per_movement = 2.0
+
+[node name="Moving Platform5" parent="LevelGeometry" instance=ExtResource("2_r2qat")]
+position = Vector2(445, -138)
+movements = PackedVector2Array(0, 0, 0, -150)
+seconds_per_movement = 1.0
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_4013k")]
+position = Vector2(-864, 239)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="1" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(909.5, 377)
+scale = Vector2(3.15799, 2.32716)
+texture = ExtResource("4_qpmfy")
+
+[node name="clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/clouds"]
+offset_left = -3495.0
+offset_right = 4478.0
+offset_bottom = 324.0
+texture = ExtResource("5_fj8tr")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/clouds"]
+offset_left = -2163.0
+offset_top = 322.0
+offset_right = 4473.0
+offset_bottom = 736.0
+color = Color(0.337255, 0.415686, 0.537255, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -3495.0
+offset_right = 4478.0
+offset_bottom = 324.0
+texture = ExtResource("6_p8311")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -2163.0
+offset_top = 322.0
+offset_right = 4473.0
+offset_bottom = 736.0
+color = Color(0.545098, 0.670588, 0.74902, 1)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = -3495.0
+offset_right = 4478.0
+offset_bottom = 324.0
+texture = ExtResource("7_16n71")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = -2163.0
+offset_top = 322.0
+offset_right = 4473.0
+offset_bottom = 736.0
+color = Color(0.337255, 0.415686, 0.537255, 1)
+
+[node name="Flag" parent="." instance=ExtResource("8_qh2ap")]
+position = Vector2(591, -155)
+
+[node name="Spikes" parent="." instance=ExtResource("2_ebxoo")]
+position = Vector2(-50, 1074)
+scale = Vector2(100, 100)
