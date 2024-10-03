@@ -1,7 +1,7 @@
 extends Node
 
 var current_level = 0
-var levels = ["res://alevel1.tscn", "res://level1.tscn"]
+var levels = ["res://level1.tscn", "res://level2.tscn", "res://level3.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
